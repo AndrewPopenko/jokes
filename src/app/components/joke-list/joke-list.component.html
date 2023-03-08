@@ -1,0 +1,15 @@
+<div class="jokes-layer">
+  <ng-container *ngFor="let joke of allJokes; let index = index">
+    <div
+      [ngStyle]="{'margin-top': index%2 !== 0 ? '25px': '0'}"
+      class="joke">
+      <div class="category">
+        kategoria: <b>{{ getCategory(joke?.category) }}</b>
+      </div>
+      <div class="joke-text">
+        {{ joke.content }}
+      </div>
+      <div class="deleteBtn" (click)="deleteJoke(joke?.id)">Usuń</div>
+    </div>
+  </ng-container>
+</div>

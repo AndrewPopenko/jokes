@@ -1,0 +1,48 @@
+@import 'src/assets/styles/variables';
+
+.bar {
+  background-image: url('src/assets/images/logo.svg');
+  background-position: center left;
+  background-repeat: no-repeat;
+  border-bottom: 3px;
+  border-bottom-color: grey;
+  font: @my-font;
+  display: flex;
+  gap: 16px;
+  height: 80px;
+  justify-content: end;
+  margin: 28px 16px;
+
+  @media ( max-width: 265px) {
+    background-image: none;
+    justify-content: space-between;
+  }
+
+  .jokes,
+  .my-jokes {
+    align-self: center;
+    color: black;
+    cursor: pointer;
+
+    &.active {
+      color: #FFCC15;
+    }
+  }
+}
+
+.addBtn,
+.nextBtn {
+  background: #FFCC15;
+  border-radius: 8px;
+  cursor: pointer;
+  font: @my-font;
+  height: 48px;
+  margin: 32px 0;
+  padding-top: 13px;
+  text-align: center;
+}
+
+.snackBar {
+  background: #6AC068;
+  border-radius: 8px;
+}

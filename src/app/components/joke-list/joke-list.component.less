@@ -1,0 +1,42 @@
+@import 'src/assets/styles/variables';
+
+.jokes-layer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  .joke {
+    background: #FFFFFF;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    width: 40%;
+
+    .category {
+      align-self: end;
+      margin: 34px 32px 0 0;
+    }
+
+    .joke-text {
+      align-self: center;
+      margin: 15px 32px;
+      text-align: center;
+    }
+  }
+
+  .deleteBtn {
+    align-self: end;
+    background: #E44C4C;
+    border-radius: 8px;
+    cursor: pointer;
+    font: @my-font;
+    height: 48px;
+    margin: 32px 32px;
+    padding-top: 13px;
+    text-align: center;
+    width: 110px;
+  }
+}
