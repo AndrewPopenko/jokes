@@ -4,12 +4,13 @@
       [ngStyle]="{'margin-top': index%2 !== 0 ? '25px': '0'}"
       class="joke">
       <div class="category">
-        kategoria: <b>{{ getCategory(joke?.category) }}</b>
+        <!--        kategoria: <b>{{ getCategory(joke?.category) }}</b>-->
+        kategoria: <b>{{ joke?.category | category }}</b>
       </div>
       <div class="joke-text">
         {{ joke.content }}
       </div>
-      <div class="deleteBtn" (click)="deleteJoke(joke?.id)">Usuń</div>
+      <div (click)="deleteJoke(joke?.id)" class="deleteBtn">Usuń</div>
     </div>
   </ng-container>
 </div>

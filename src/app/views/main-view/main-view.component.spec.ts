@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainViewComponent } from './main-view.component';
-import { JokeService } from "../../shared/services/joke.service";
-import { ActivatedRoute } from "@angular/router";
-import { RouterTestingModule } from "@angular/router/testing";
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { NewJokeDlgComponent } from "../../components/new-joke-dlg/new-joke-dlg.component";
+import { JokeService } from '../../shared/services/joke.service';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { NewJokeDlgComponent } from '../../components/new-joke-dlg/new-joke-dlg.component';
 
 describe('MainViewComponent', () => {
   let component: MainViewComponent;
@@ -14,11 +14,14 @@ describe('MainViewComponent', () => {
   let dialogSpy: jasmine.SpyObj<MatDialog>;
 
   const fakeActivatedRoute = {
-    snapshot: { data: {} }
+    snapshot: { data: {} },
   } as ActivatedRoute;
 
   beforeEach(async () => {
-    dialogRefSpy = jasmine.createSpyObj<MatDialogRef<NewJokeDlgComponent>>('MatDialogRef', ['close']);
+    dialogRefSpy = jasmine.createSpyObj<MatDialogRef<NewJokeDlgComponent>>(
+      'MatDialogRef',
+      ['close']
+    );
     dialogSpy = jasmine.createSpyObj<MatDialog>('MatDialog', ['open']);
 
     await TestBed.configureTestingModule({
@@ -28,10 +31,9 @@ describe('MainViewComponent', () => {
         JokeService,
         { provide: ActivatedRoute, useValue: fakeActivatedRoute },
         { provide: MatDialogRef, useValue: dialogRefSpy },
-        { provide: MatDialog, useValue: dialogSpy }
-      ]
-    })
-      .compileComponents();
+        { provide: MatDialog, useValue: dialogSpy },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MainViewComponent);
     component = fixture.componentInstance;

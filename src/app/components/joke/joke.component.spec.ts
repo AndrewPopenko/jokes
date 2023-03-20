@@ -1,19 +1,24 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 
 import { JokeComponent } from './joke.component';
-import { RouterTestingModule } from "@angular/router/testing";
-import { JokeService } from "../../shared/services/joke.service";
-import { of } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
+import { RouterTestingModule } from '@angular/router/testing';
+import { JokeService } from '../../shared/services/joke.service';
+import { of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 describe('JokeComponent', () => {
   let component: JokeComponent;
   let fixture: ComponentFixture<JokeComponent>;
 
-  let joke = {
-    "id": "b99be362-7044-4bca-aed2-e734f7999e5e",
-    "code": "IT",
-    "name": "Informatyczne"
+  const joke = {
+    id: 'b99be362-7044-4bca-aed2-e734f7999e5e',
+    code: 'IT',
+    name: 'Informatyczne',
   };
 
   const fakeActivatedRoute = {
@@ -22,7 +27,7 @@ describe('JokeComponent', () => {
 
   const fakeJokeService = {
     currentJoke$: of(joke),
-    getCategoryById: joke
+    getCategoryById: joke,
   };
 
   beforeEach(async () => {
@@ -31,10 +36,9 @@ describe('JokeComponent', () => {
       imports: [RouterTestingModule],
       providers: [
         { provide: JokeService, useValue: fakeJokeService },
-        { provide: ActivatedRoute, useValue: fakeActivatedRoute }
-      ]
-    })
-      .compileComponents();
+        { provide: ActivatedRoute, useValue: fakeActivatedRoute },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(JokeComponent);
     component = fixture.componentInstance;
@@ -53,10 +57,16 @@ describe('JokeComponent', () => {
   }));
 
   it('should get category by id', function () {
-    // @ts-ignore
-    const spy = spyOn(component.categoryService, 'getCategoryById').and.callThrough();
+    const spy = spyOn(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      component.categoryService,
+      'getCategoryById'
+    ).and.callThrough();
 
     component.getCategory('b99be362-7044-4bca-aed2-e734f7999e5e');
-    expect(spy).toHaveBeenCalledOnceWith('b99be362-7044-4bca-aed2-e734f7999e5e');
+    expect(spy).toHaveBeenCalledOnceWith(
+      'b99be362-7044-4bca-aed2-e734f7999e5e'
+    );
   });
 });

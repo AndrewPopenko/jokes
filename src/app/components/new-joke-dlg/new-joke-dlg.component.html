@@ -3,16 +3,16 @@
     <div class="col-12 inputs-wrapper" mat-dialog-content>
       <h1 mat-dialog-title>Dodawanie żartu</h1>
       <mat-form-field appearance="fill">
-        <mat-select [(value)]="selected" placeholder="Wybierz kategorię" formControlName="categorySelect">
+        <mat-select [(value)]="selected" formControlName="categorySelect" placeholder="Wybierz kategorię">
           <mat-option *ngFor="let item of categories" [value]="item">{{item.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
         <textarea
+          formControlName="content"
           matInput
           placeholder="Wprowadź treść żartu"
-          rows="10"
-          formControlName="content"></textarea>
+          rows="10"></textarea>
       </mat-form-field>
     </div>
     <div class="col-11 btn-wrapper" mat-dialog-actions>
@@ -22,10 +22,10 @@
         mat-dialog-close="closed">Anuluj
       </button>
       <button
-        class="add"
+        (click)="save()"
         [disabled]="!newJokeForm.controls['categorySelect'].value || !newJokeForm.controls['content'].value"
-        mat-button
-        (click)="save()">Dodaj
+        class="add"
+        mat-button>Dodaj
       </button>
     </div>
   </div>

@@ -1,35 +1,23 @@
 import { Injectable } from '@angular/core';
-import { CategoryInterface } from "../interfaces/category.interface";
-import { BehaviorSubject } from "rxjs";
+import {
+  categories,
+  CategoryInterface,
+} from '../interfaces/category.interface';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoryService {
-  allCategories$: BehaviorSubject<CategoryInterface[]> = new BehaviorSubject<CategoryInterface[]>([]);
+  allCategories$: BehaviorSubject<CategoryInterface[]> = new BehaviorSubject<
+    CategoryInterface[]
+  >([]);
 
   constructor() {
-    this.allCategories$.next(this.categories);
-  }
-  getCategoryById(id: string): CategoryInterface {
-    return this?.categories?.find(it => it?.id === id) as CategoryInterface;
+    this.allCategories$.next(categories);
   }
 
-  private categories: CategoryInterface[] = [
-    {
-      "id": "b99be362-7044-4bca-aed2-e734f7999e5e",
-      "code": "IT",
-      "name": "Informatyczne"
-    },
-    {
-      "id": "e451c8bc-667e-4b3a-a38e-c4b782ac3751",
-      "code": "ABOUT_JOHNY",
-      "name": "O Jasiu"
-    },
-    {
-      "id": "8ad0481c-c85c-4b5e-98e0-77711a65f841",
-      "code": "ABOUT_FIREFIGHTERS",
-      "name": "O strażakach"
-    }
-  ];
+  getCategoryById(id: string): CategoryInterface {
+    return categories?.find((it) => it?.id === id) as CategoryInterface;
+  }
 }
